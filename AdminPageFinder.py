@@ -1,7 +1,3 @@
-#Created for coded32 and his teamopenfire Eliminated Some bugs from my last code shared here as Guest.
-#Greets To T.O.F and Indishell
-#Thanks friends for find bugs and give suggetions
-
 import http.client
 import socket
 import sys
