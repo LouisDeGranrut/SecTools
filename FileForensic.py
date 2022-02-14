@@ -6,6 +6,7 @@ import exifread
 import sqlite3
 from termcolor import colored
 
+#PDF Analysis
 def get_pdf_meta(file):
     pdf_file = PyPDF2.PdfFileReader(open(file,"rb"))
     doc_info = pdf_file.getDocumentInfo()
@@ -19,6 +20,7 @@ def get_strings(file):
     for match in _re.finditer(content.decode("utf8", "backslashreplace")):
         print(match.group())
 
+#Image analysis
 def get_exif(file):
     with open(file, "rb") as file:
         exif = exifread.process_file(file)
@@ -47,6 +49,6 @@ if args.pdf:
 if args.str:
     get_strings(args.str)
 if args.exif:
-    get_exif(args.str)
+    get_exif(args.exif)
 if args.help:
     get_help()
