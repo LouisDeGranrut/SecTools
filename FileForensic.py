@@ -4,6 +4,7 @@ import argparse
 import re
 import exifread
 import sqlite3
+import pyfiglet
 from termcolor import colored
 
 #PDF Analysis
@@ -35,6 +36,8 @@ def get_help():
     print(colored("[+] " + "-str:", "yellow"))
     print(colored("[+] " + "-exif: Image exif extractor", "yellow"))
 
+print(colored(pyfiglet.figlet_format('File Forensic', font='big'), "yellow"))
+get_help()
 
 parser = argparse.ArgumentParser(description="File analysis tool")
 parser.add_argument("-help", dest="help", help = "Shows help", required=False)
