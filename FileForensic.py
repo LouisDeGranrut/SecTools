@@ -36,22 +36,22 @@ def get_help():
     print(colored("[+] " + "-str:", "yellow"))
     print(colored("[+] " + "-exif: Image exif extractor", "yellow"))
 
-print(colored(pyfiglet.figlet_format('File Forensic', font='big'), "yellow"))
-get_help()
-
-parser = argparse.ArgumentParser(description="File analysis tool")
-parser.add_argument("-help", dest="help", help = "Shows help", required=False)
-parser.add_argument("-pdf", dest="pdf", help = "Path of the PDF file to analyse", required=False)
-parser.add_argument("-str", dest="str", help = "Path of the file to analyse", required=False)
-parser.add_argument("-exif", dest="exif", help = "Path of the image to analyse", required=False)
-
-args = parser.parse_args()
-
-if args.pdf:
-    get_pdf_meta(args.pdf)
-if args.str:
-    get_strings(args.str)
-if args.exif:
-    get_exif(args.exif)
-if args.help:
+if __name__ == "__main__":
+    print(colored(pyfiglet.figlet_format('File Forensic', font='big'), "yellow"))
     get_help()
+    parser = argparse.ArgumentParser(description="File analysis tool")
+    parser.add_argument("-help", dest="help", help = "Shows help", required=False)
+    parser.add_argument("-pdf", dest="pdf", help = "Path of the PDF file to analyse", required=False)
+    parser.add_argument("-str", dest="str", help = "Path of the file to analyse", required=False)
+    parser.add_argument("-exif", dest="exif", help = "Path of the image to analyse", required=False)
+
+    args = parser.parse_args()
+
+    if args.pdf:
+        get_pdf_meta(args.pdf)
+    if args.str:
+        get_strings(args.str)
+    if args.exif:
+        get_exif(args.exif)
+    if args.help:
+        get_help()
