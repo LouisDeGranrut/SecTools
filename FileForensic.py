@@ -4,12 +4,13 @@ import argparse
 import re
 import exifread
 import sqlite3
+from termcolor import colored
 
 def get_pdf_meta(file):
     pdf_file = PyPDF2.PdfFileReader(open(file,"rb"))
     doc_info = pdf_file.getDocumentInfo()
     for info in doc_info:
-        print("[+] " + info + ": " + doc_info[info])
+        print(colored("[+] " + info + ": " + doc_info[info], "green"))
 
 def get_strings(file):
     with open(file, "rb") as file:
@@ -22,15 +23,15 @@ def get_exif(file):
     with open(file, "rb") as file:
         exif = exifread.process_file(file)
     if not exif:
-        print("No EXIF data found")
+        print(colored("No EXIF data found", "red"))
     else:
         for tag in exif.keys():
             print(tag + " " + str(exif[tag])) 
 
 def get_help():
-    print("[+] " + "-pdf PDF analysis")
-    print("[+] " + "-str")
-    print("[+] " + "-exif Image exif extractor")
+    print(colored("[+] " + "-pdf: PDF analysis", "yellow" ))
+    print(colored("[+] " + "-str:", "yellow"))
+    print(colored("[+] " + "-exif: Image exif extractor", "yellow"))
 
 
 parser = argparse.ArgumentParser(description="File analysis tool")
