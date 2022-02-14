@@ -1,3 +1,4 @@
+#!/usr/bin/env python 3
 import http.client
 import socket
 import sys
